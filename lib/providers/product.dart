@@ -23,14 +23,14 @@ class Product with ChangeNotifier {
     this.isFavorite = false,
   });
 
-  Future<void> toggleFavoriteStatus() async {
+  Future<void> toggleFavoriteStatus(String token, String userId) async {
     var tempFavorite = isFavorite;
     isFavorite = !isFavorite;
     final url =
-        "https://flutterupdate-aed81-default-rtdb.asia-southeast1.firebasedatabase.app/products/$id.json";
+        "https://flutterupdate-aed81-default-rtdb.asia-southeast1.firebasedatabase.app/userFavorites/$userId/$id.json?auth=$token";
     notifyListeners();
-    final response = await http.patch(Uri.parse(url),
-        body: json.encode({"isFavorite": isFavorite}));
+    final response =
+        await http.put(Uri.parse(url), body: json.encode(isFavorite));
     if (response.statusCode >= 400) {
       isFavorite = tempFavorite;
       notifyListeners();

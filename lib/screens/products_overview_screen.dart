@@ -4,14 +4,10 @@ import 'package:shop_app/screens/cart_screen.dart';
 import 'package:shop_app/widgets/app_drawer.dart';
 
 import '../widgets/app_drawer.dart';
-import '../providers/product.dart';
 import '../providers/products_provider.dart';
-import '../widgets/product_item.dart';
 import '../widgets/products_grid.dart';
 import '../screens/cart_screen.dart';
 import '../providers/cart.dart';
-
-import '../providers/products_provider.dart';
 
 import '../widgets/badge.dart';
 
@@ -49,8 +45,6 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final productsContainer =
-        Provider.of<ProductsProvider>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         title: Text("My Shop"),
